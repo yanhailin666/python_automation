@@ -1,7 +1,7 @@
 import os
-import unittest
+import unittest,time
 from faction import HTMLTestRunner
-from action.login import Test_login
+
 
 class AllTest:
 
@@ -14,7 +14,7 @@ class AllTest:
         proDir = os.path.split(os.path.realpath(__file__))[0]
         print(proDir)
         #用例的目录
-        self.caseFile = os.path.join(proDir, 'action')
+        self.caseFile = os.path.join(proDir, 'TestCases')
         print(self.caseFile)
 
         #建立一个测试集
@@ -42,7 +42,9 @@ class AllTest:
                 #设置报告存放的路径
                 proDir = os.path.split(os.path.realpath(__file__))[0]
                 print(proDir)
-                resultPath=os.path.join(proDir,'timetest\\report.html')
+                time_code=time.strftime("%Y-%m-%d %H-%M-%S", time.localtime())## 返回有格式的日期，要用日期命名文件时，不能有< > / \ | : " * ?；
+                report=str(r'timetest\\'+time_code+'.html')
+                resultPath=os.path.join(proDir,report)
                 print(resultPath)
 
                 #打开报告的文件

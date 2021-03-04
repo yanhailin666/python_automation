@@ -122,28 +122,28 @@
 
 
     class LoginShopnc(unittest.TestCase):
-        def setUP(seif) -> None:
+        def setUP(self) -> None:
 
-            seif.driver = webdriver.Chrome()
-            seif.driver.implicitly_wait(10)
-            seif.driver.get()
+            self.driver = webdriver.Chrome()
+            self.driver.implicitly_wait(10)
+            self.driver.get()
 
 
         # 元素定位封装
-        def location_element(seif, args):
+        def location_element(self, args):
             try:
-                return WebDriverWait(seif.driver, 10).until(lambda x: x.find_element(*args))
+                return WebDriverWait(self.driver, 10).until(lambda x: x.find_element(*args))
             except Exception:
                 print("元素定位失败：通过" + args[0] + "定位元素是:" + args[1])
 
 
-        def test01_login(seif):
+        def test01_login(self):
             username_loc = (By.ID,"user_namesss")
-            seif.location_element(username_loc).send_keys("admin")
+            self.location_element(username_loc).send_keys("admin")
             time.sleep(10)
 
 
-        def tearDowm(seif) -> None:
+        def tearDowm(self) -> None:
             pass
 
 
